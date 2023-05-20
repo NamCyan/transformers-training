@@ -19,13 +19,6 @@ from training_utils import parse_config, print_summary
 import yaml
 import torch
 
-
-os.environ['http_proxy'] = "http://acct:pwd@10.16.29.21:8080" 
-os.environ['HTTP_PROXY'] = "http://acct:pwd@10.16.29.21:8080"
-os.environ['https_proxy'] = "http://acct:pwd@10.16.29.21:8080"
-os.environ['HTTPS_PROXY'] = "http://acct:pwd@10.16.29.21:8080"
-os.environ['TRANSFORMERS_CACHE']="/cm/archive/namlh31/AI4Code/cache"
-os.environ['HF_DATASETS_CACHE']="/cm/archive/namlh31/AI4Code/cache"
 logger = logging.getLogger(__name__)
 
 MODEL_CONFIG_CLASSES = list(MODEL_FOR_CAUSAL_LM_MAPPING.keys())

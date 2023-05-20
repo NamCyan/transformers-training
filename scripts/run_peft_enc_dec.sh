@@ -10,7 +10,7 @@ export https_proxy=http://10.16.29.10:8080
 # LOCAL_RANK=0,1,2,3 CUDA_VISIBLE_DEVICES=0,3,6,7 python -m torch.distributed.launch \
 #     --nproc_per_node 4 --use-env peft-finetuning-enc-dec.py \
 #     --ddp_find_unused_parameters False \
-#     --deepspeed /home/namlh31/project/AI4Code/TheVault_exp/configs/ds_config_zero3.json \
+#     --deepspeed ./configs/ds_config_zero3.json \
 CUDA_VISIBLE_DEVICES=0,3,6,7 python peft-finetuning-enc-dec.py \
     --model_name_or_path Salesforce/codet5-large  \
     --do_train \
@@ -35,11 +35,11 @@ CUDA_VISIBLE_DEVICES=0,3,6,7 python peft-finetuning-enc-dec.py \
     --gradient_accumulation_steps 1 \
     --input_column docstring \
     --output_column code \
-    --lora_config_path /home/namlh31/project/AI4Code/TheVault_exp/configs/lora_enc_dec_config.yaml \
-    --train_file /cm/archive/namlh31/AI4Code/codebridgedata/splits/python/train.json \
-    --validation_file /cm/archive/namlh31/AI4Code/codebridgedata/splits/python/valid.json \
-    --output_dir /cm/archive/namlh31/AI4Code/codebridgedata/exps/codet5-large-python4M-fp16-1epoch-peft \
-    --cache_dir /cm/archive/namlh31/AI4Code/.cache \
+    --lora_config_path ./configs/lora_enc_dec_config.yaml \
+    --train_file ./data/train.json \
+    --validation_file ./data/valid.json \
+    --output_dir output \
+    --cache_dir .cache \
     --gradient_checkpointing \
     --tf32 True \
     --low_cpu_mem_usage \

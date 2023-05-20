@@ -15,8 +15,8 @@ export https_proxy=http://10.16.29.10:8080
 LOCAL_RANK=0,1,2,3,4 CUDA_VISIBLE_DEVICES=0,1,2,3,4 python -m torch.distributed.launch \
     --nproc_per_node 5 --use-env peft-finetuning-causal.py \
     --ddp_find_unused_parameters False \
-    --deepspeed /home/namlh31/project/AI4Code/TheVault_exp/configs/ds_config_zero3.json \
-    --model_name_or_path /cm/archive/namlh31/models/starcoder/ \
+    --deepspeed ./configs/ds_config_zero3.json \
+    --model_name_or_path bigcode/starcoder \
     --dataset_name_or_path Fsoft-AIC/the-vault-function \
     --do_train \
     --do_eval \
@@ -47,9 +47,9 @@ LOCAL_RANK=0,1,2,3,4 CUDA_VISIBLE_DEVICES=0,1,2,3,4 python -m torch.distributed.
     --max_input_length 400 \
     --prefix_prompt="<comment>" \
     --postfix_prompt="<code>" \
-    --output_dir /cm/archive/namlh31/AI4Code/codebridgedata/exps/starcoder-python-4M-1epoch \
-    --cache_dir /cm/archive/namlh31/AI4Code/.cache \
-    --lora_config_path /home/namlh31/project/AI4Code/TheVault_exp/configs/lora_causal_config.yaml \
+    --output_dir ./output \
+    --cache_dir .cache \
+    --lora_config_path ./configs/lora_causal_config.yaml \
     --bf16 \
     --gradient_checkpointing \
     --new_tokens="<comment>;<code>" \
